@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Administrare produse</title>
+	<link rel="stylesheet" type="text/css" href="produseCssClean.css">
+
+	<style>
+		.hidden {
+			display: none;
+		}
+
+		#image {
+			width: 800px;
+		}
+		
+		#name {
+			width: 800px;
+		}
+
+		#description{
+			width: 800px;
+		}
+
+
+
+	</style>
+
+	<script type="text/javascript" src="produseJavaClean.js"></script>
+
+	<script type="text/javascript">
+
+		function showForm() {
+			document.querySelector("#form").classList.remove("hidden");
+			document.querySelector("#containerTable").classList.add("hidden");
+		}
+
+		function showTable() {
+			document.querySelector("#form").reset();
+			document.querySelector("#form").classList.add("hidden");
+			document.querySelector("#containerTable").classList.remove("hidden");
+		}
+
+		var iEdit;
+		var list = [];
+		async function afiseaza(){
+			var response = await fetch("https://electroit-d9de1.firebaseio.com/.json");
+			window.list = await response.json();
+			showTable();
+			var str ="";
+				for(var i in list){
+					str +=`
+						<div class="cart-row">
+							<span class="cart-item cart-column">
+				            	<span class="cart-item-id">${list[i].id}</span>
+				            </span>
+				            <span class="cart-item cart-column">
+				            	<img class="cart-item-image" src="${list[i].imagine}" width="90" height="90">
+				            	<span onclick="edit('${i}')" class="cart-item-title" style="cursor:pointer">${list[i].nume}</span>
+				            </span>
+				            <span class="cart-price cart-column">
+				            	<span class="cart-price">${list[i].pret} Lei</span>
+				            </span>
+				            <span class="cart-quantity cart-column">
+				            	<div>${list[i].cantitate}</div>
+				        	</span>
+				            <span class="cart-remove cart-column">
+				            	<button class="btn btn-danger" type="button" onclick="del('${i}')">STERGE</button>
+				            </span>
+			       		</div>`;				
+				}
+				document.querySelector("#productRows").innerHTML=str;
+		}
+
+		async function add(event){
+			event.preventDefault();
+			var obj={
+				nume:document.querySelector("[name='name']").value,
+				imagine:document.querySelector("[name='image']").value,
+				descriere:document.querySelector("[name='description']").value,
+				pret:document.querySelector("[name='price']").value,
+				cantitate:document.querySelector("[name='inventory']").value,
+				id:document.querySelector("[name='identification']").value
+				}
+			if(iEdit!==undefined){
+				//list[iEdit] = obj;
+				
+				var response = await fetch(`https://electroit-d9de1.firebaseio.com/${iEdit}.json`,{
+				method:"put",
+				body:JSON.stringify(obj)
+			});
+					
+			}else{
+				var response = await fetch(`https://electroit-d9de1.firebaseio.com/.json`,{
+				method:"post",
+				body:JSON.stringify(obj)
+				});
+				//list.push(obj);
+			}
+				
+			await afiseaza();
+			showTable();
+		}
+
+		async function del(i){
+			if(confirm(`Are you sure you want to delete ${list[i].nume} ?`)){
+			//list.splice(i,1);
+				var response = await fetch(`https://electroit-d9de1.firebaseio.com/${i}.json`,{
+				method:"delete"
+				});
+				await afiseaza();
+			}
+		}
+
+		function edit(i){
+			iEdit = i;
+			showForm();
+			document.querySelector("[name='name']").value = list[i].nume;
+			document.querySelector("[name='image']").value = list[i].imagine;
+			document.querySelector("[name='description']").value = list[i].descriere;
+			document.querySelector("[name='price']").value = list[i].pret;
+			document.querySelector("[name='inventory']").value = list[i].cantitate;
+			document.querySelector("[name='identification']").value = list[i].id;
+		}
+
+	</script>
+
+</head>
+<body onload="afiseaza()">
+	<div class="topSection">
+		<div id="header">
+			<div id="navigationBar">
+				<a href="listaProduseClean.html"><img class="topItem sheep" src="sheep.svg"></a>
+				<div class="topItem storeName">Urban Sheep</div>
+				<a href="cosProduseClean.html"><input class="topItem btnMainPg btnCart" type="button" name="cart" value="Cos cumparaturi"></a>
+			</div>
+		</div>
+	</div>
+
+	<section class="container content-section">
+
+        <h2 class="section-header">Administrare produse</h2>	
+		
+		<form id="form" class="hidden" onsubmit="add(event);">
+			<fieldset>
+				<div>
+					<input type="submit" value="Save"/>
+					<input type="button" value="Cancel" onclick="showTable();"/>
+				</div>
+				<legend>Gestiune produse</legend>
+				<div class="formControl">
+					<label for="inventory">ID:</label>
+					<input id="identification" type="number" name="identification"/>
+
+					<label for="image">Link imagine:</label>
+					<input id="image" type="text" name="image"/>
+					
+					<label for="name">Nume:</label>
+					<input id="name" type="text" name="name"/>
+					
+					<label for="description">Descriere:</label>
+					<textarea id="description" name="description"></textarea>
+					
+					<label for="price">Pret:</label>
+					<input id="price" type="number" name="price"/>
+
+					<label for="inventory">Stoc:</label>
+					<input id="inventory" type="number" name="inventory"/>
+				</div>
+			</fieldset>
+		</form>
+
+	<section class="container content-section">
+		
+		<div id="containerTable">
+			<input type="button" name="produsNou" value="Adauga produs" onclick="showForm();">
+	        <div class="cart-row">
+	        	<span class="cart-item cart-header cart-column">ID</span>
+	            <span class="cart-item cart-header cart-column">PRODUS</span>
+	            <span class="cart-price cart-header cart-column">PRET</span>
+	            <span class="cart-quantity cart-header cart-column">CANTITATE</span>
+	            <span class="cart-remove cart-header cart-column">STERGE</span>
+	       	</div>
+
+	       	<div id="productRows">
+		        
+		    </div>
+
+		</div>
+
+	</section>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+[{
+  "id" : 1,
+  "cantitate" : 70,
+  "descriere" : "The best OS",
+  "imagine" : "https:/store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-iphoneX-spacegray_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1548459945536",
+  "nume" : "iPhone",
+  "pret" : 4500
+},
+
+{
+  "id" : 2,
+  "cantitate" : 35,
+  "descriere" : "Gamer choise",
+  "imagine" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX8sR60MHA8gZnL12PkKJuHg3EuZrWQje6cLMz2pUI1rJ7D_UN8A",
+  "nume" : "Laptop ASUS ROG Strix 15.6",
+  "pret" : 8200
+},
+
+{
+  "id" : 3,
+  "cantitate" : 200,
+  "descriere" : "50 Inch KDL50WF663BU",
+  "imagine" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZfP8_b986Nhc709kgBt4N3g07ZcYrK8VWOl0zUXGhqaXnMzEC",
+  "nume" : "SonySmart Full HD LED TV",
+  "pret" : 2800
+},
+
+{
+  "id" : 4,
+  "cantitate" : 37,
+  "descriere" : "Clean and Gum care mode with 2 intensities, pressure sensor to let you know when you are brushing too hard plus brush head replacement reminder",
+  "imagine" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGJKReOmYc-Koy6xJB7dXJCVGcKaPfInltzOUTjfGNERDzM8uO",
+  "nume" : "Philips Sonicare",
+  "pret" : 370
+},
+
+{
+  "id" : 5,
+  "cantitate" : 80,
+  "descriere" : "2.0 Channel Sound  Wireless Surround Sound Systems with Optical Coaxial Bluetooth 4.0",
+  "imagine" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8TwRVKWCO8a2LOgAGYtxQRwmwPZXNCWN097XSQ6FLloqHv6lO",
+  "nume" : "TV Soundbar",
+  "pret" : 1100
+},
+
+{
+  "id" : 6,
+  "cantitate" : 45,
+  "descriere" : "Home Theatre System 1000W 5.1Ch Bluetooth DVD",
+  "imagine" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl0g2bO8rVtRpzlNHrXpnA76btHDv7jXoEGjzCRR7xUopzaHH4",
+  "nume" : "SONY Home Theatre",
+  "pret" : 1500
+},
+
+{
+  "id" : 7,
+  "cantitate" : 30,
+  "descriere" : "Connectors: USB, TF CARD, MICRO USB",
+  "imagine" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHq_kxZslnvGNDXZKqikak22s9BEYJTchSBCi30hGLl6YKJLUGcg",
+  "nume" : "Android Box",
+  "pret" : 450
+}]
+
+
+

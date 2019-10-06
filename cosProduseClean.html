@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cos de cumparaturi</title>
+	<link rel="stylesheet" type="text/css" href="produseCssClean.css">
+	<script type="text/javascript" src="produseJavaClean.js"></script>
+
+</head>
+
+
+<body onload="drawCart()">
+	<div class="topSection">
+		<div id="header">
+			<div id="navigationBar">
+				<a href="listaProduseClean.html"><img class="topItem sheep" src="sheep.svg"></a>
+				<a href="listaProduseClean.html"><div class="topItem storeName">Urban Sheep</div></a>
+				<a href="adminClean.html"><input class="topItem btnMainPg btnAdm" type="button" name="admin" value="ADMIN"></a>
+			</div>
+		</div>
+	</div>
+
+    <section class="container content-section">
+        
+        <h2 class="section-header">Cos de cumparaturi</h2>
+        <div class="cart-row">
+            <span class="cart-item cart-header cart-column">PRODUS</span>
+            <span class="cart-price cart-header cart-column">PRET</span>
+            <span class="cart-quantity cart-header cart-column">CANTITATE</span>
+            <span class="cart-subtotal cart-header cart-column">SUBTOTAL</span>
+            <span class="cart-remove cart-header cart-column">STERGE</span>
+       	</div>
+
+       	<div id="productRows">
+	        
+	    </div>      
+             
+
+        <div class="cart-total">
+            <strong class="cart-total-title">Total</strong>
+            <span class="cart-total-price"> </span>
+        </div>
+        <button class="btn btn-primary btn-purchase" type="button" onclick="deleteAllFromCart()">CUMPARA</button>
+    </section>
+</body>
+</html>
